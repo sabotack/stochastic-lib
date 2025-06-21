@@ -6,8 +6,15 @@ Developed as an assignment for the *Selected Topics in Programming* (sP) course 
 
 ## Build Requirements
 - C++23-compatible compiler
-- CMake 3.31+
+- CMake ≥ 3.31
 - Python 3.10 (with NumPy and matplotlib for plotting with`matplotlib-cpp`)
+
+## Build
+```bash
+mkdir build && cd build
+cmake ..
+cmake --build .
+```
 
 ## Project Structure
 - cmake/ - *cmake files for compiling test libraries*
