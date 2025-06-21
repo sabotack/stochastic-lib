@@ -2,7 +2,13 @@
 # Stochastic Simulation Library
 A C++ library for simulating stochastic systems using the **Doob–Gillespie algorithm**.
 
-Developed as an assignment for the *Selected Topics in Programming* (sP) course at Aalborg University (AAU).
+> [!NOTE]
+> Developed as an assignment for the *Selected Topics in Programming* (sP) course at Aalborg University (AAU).
+
+> [!IMPORTANT]
+> All requirements for the assignment have been fulfilled! The `examples` directory provides usage examples of the library using three different models (abc, circadian_rhythm, and seihr).
+>
+> Should have used function template instead of std::function for the observer implementation.
 
 ## Build Requirements
 - C++23-compatible compiler
@@ -17,13 +23,15 @@ cmake --build .
 ```
 
 ## Project Structure
-- cmake/ - *cmake files for compiling test libraries*
-- examples/ - *Demonstration of the simulation library*
-- external/ - *External libraries*
-- include/ - *Public headers for the library*
-- output/ - *Graphs and plots*
-- src/ - *Simulation library implementation*
-- tests/ - *Unit tests and benchmarks*
+```
+├── cmake/         # cmake files for compiling test libraries
+├── examples/      # Demonstration of the simulation library
+├── external/      # External libraries
+├── include/       # Public headers for the library
+├── output/        # Graphs and plots
+├── src/           # Simulation library implementation
+├── tests/         # Unit tests and benchmarks
+```
 
 ## Peak Hospitalization Estimation
 Peak hospitalization values for populations of sizes NNJ and NDK (recorded through single run of `seihr_estimation.cpp`):
