@@ -1,7 +1,7 @@
 #ifndef EXAMPLES_HPP
 #define EXAMPLES_HPP
-#include <cmath>
 
+#include <cmath>
 #include "vessel.hpp"
 
 namespace stochastic {

@@ -1,22 +1,30 @@
 #ifndef SYMBOL_TABLE_HPP
 #define SYMBOL_TABLE_HPP
+
 #include <map>
 #include <set>
 #include <sstream>
 #include <stdexcept>
 #include <vector>
 
-namespace stochastic {
+namespace stochastic
+{
+    /* RQ3: Implement a generic symbol table to store and lookup objects of user-defined key and
+     * value types. Support failure cases when a) the table does not contain a looked up symbol, b)
+     * the table already contains a symbol that is being added. Demonstrate the usage of the symbol
+     * table with the reactants (names and initial counts). */
     template <typename Key, typename Value>
-    class SymbolTable {
+    class SymbolTable
+    {
         std::map<Key, Value> table{};
         std::set<Key> internalSymbols{};
 
-        public:
+       public:
         SymbolTable() = default;
 
-        void add(const Key& key, const Value& value, const bool isInternal) {
-            auto [_, inserted] = table.emplace(std::pair<Key, Value>(key, value));
+        void add(const Key& key, const Value& value, const bool isInternal)
+        {
+            auto [_, inserted] = table.emplace(key, value);
             if (!inserted) {
                 std::ostringstream oss;
                 oss << "Key already exists: '" << key << "'";
@@ -28,7 +36,8 @@ namespace stochastic {
             }
         }
 
-        std::vector<Key> getKeys(bool excludeInternal = false) const {
+        std::vector<Key> getKeys(bool excludeInternal = false) const
+        {
             std::vector<Key> keys;
 
             if (excludeInternal) {
@@ -42,12 +51,13 @@ namespace stochastic {
                     continue;
                 }
 
-                keys.push_back(key);
+                keys.emplace_back(key);
             }
             return keys;
         }
 
-        Value& get(const Key &key) {
+        Value& get(const Key& key)
+        {
             if (!table.contains(key)) {
                 std::ostringstream oss;
                 oss << "Key not found: '" << key << "'";
@@ -56,7 +66,8 @@ namespace stochastic {
             return table.at(key);
         }
 
-        const Value& get(const Key &key) const {
+        const Value& get(const Key& key) const
+        {
             if (!table.contains(key)) {
                 std::ostringstream oss;
                 oss << "Key not found: '" << key << "'";
@@ -68,7 +79,6 @@ namespace stochastic {
         bool contains(const Key& key) const { return table.contains(key); }
         bool isInternal(const Key& key) const { return internalSymbols.contains(key); }
     };
-}
+}  // namespace stochastic
 
-
-#endif //SYMBOL_TABLE_HPP
+#endif  // SYMBOL_TABLE_HPP

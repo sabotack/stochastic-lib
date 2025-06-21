@@ -1,0 +1,24 @@
+digraph {
+ E [label="E", shape=box, style=filled, fillcolor=cyan];
+ H [label="H", shape=box, style=filled, fillcolor=cyan];
+ I [label="I", shape=box, style=filled, fillcolor=cyan];
+ R [label="R", shape=box, style=filled, fillcolor=cyan];
+ S [label="S", shape=box, style=filled, fillcolor=cyan];
+ r0 [label="7.74194e-05", shape=oval, style=filled, fillcolor=yellow];
+ S -> r0;
+ I -> r0;
+ r0 -> E;
+ r0 -> I;
+ r1 [label="0.196078", shape=oval, style=filled, fillcolor=yellow];
+ E -> r1;
+ r1 -> I;
+ r2 [label="0.322581", shape=oval, style=filled, fillcolor=yellow];
+ I -> r2;
+ r2 -> R;
+ r3 [label="0.000290061", shape=oval, style=filled, fillcolor=yellow];
+ I -> r3;
+ r3 -> H;
+ r4 [label="0.0988142", shape=oval, style=filled, fillcolor=yellow];
+ H -> r4;
+ r4 -> R;
+}

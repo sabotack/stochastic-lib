@@ -1,5 +1,6 @@
 #ifndef SIMULATOR_HPP
 #define SIMULATOR_HPP
+
 #include <future>
 #include <random>
 #include <utility>
@@ -7,34 +8,27 @@
 #include "utils.hpp"
 #include "vessel.hpp"
 
-namespace stochastic {
-    class Simulator {
+namespace stochastic
+{
+    class Simulator
+    {
         Vessel vessel;
         std::random_device rd{};
 
-        double computeDelay(const ReactionRule& rule);
+        static double computeDelay(
+            const ReactionRule& rule, const std::shared_ptr<SymbolTable<std::string, int>>& symbols,
+            std::mt19937& gen);
+        static void applyReaction(
+            const ReactionRule& rule,
+            const std::shared_ptr<SymbolTable<std::string, int>>& symbols);
 
-    public:
-        explicit Simulator(Vessel  vessel) : vessel(std::move(vessel)) {};
+       public:
+        explicit Simulator(Vessel vessel) : vessel(std::move(vessel)) {};
 
-        void simulate(double endtime, const StateObserver &observer);
+        void simulate(double endtime, const StateObserver& observer);
 
-        template <typename ObserverFactory>
-        void simulateMultiple (const int simCount, const double endtime, ObserverFactory getObserver) {
-            std::vector<std::future<void>> futures{};
-
-            for (int i = 0; i < simCount; i++) {
-                futures.emplace_back(std::async(std::launch::async, [=]() {
-                    stochastic::Simulator sim{this->vessel};
-                    auto observer = getObserver();
-                    sim.simulate(endtime, observer);
-                }));
-            }
-
-            for (auto& f : futures) f.get();
-        }
+        void simulateMultiple(int simCount, double endtime, const ThreadObserver& observer);
     };
-}
+}  // namespace stochastic
 
-
-#endif //SIMULATOR_HPP
+#endif  // SIMULATOR_HPP

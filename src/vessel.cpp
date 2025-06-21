@@ -1,16 +1,14 @@
 #include "vessel.hpp"
 
-using namespace stochastic;
-
-Reactant Vessel::add(const std::string &name, const int initialValue, const bool isInternal) {
+stochastic::Reactant stochastic::Vessel::add(
+    const std::string &name, const int initialValue, const bool isInternal)
+{
     symbols.add(name, initialValue, isInternal);
     return Reactant{name, initialValue};
 }
 
-ReactionRule Vessel::add(const ReactionRule &rule) {
-    rules.push_back(rule);
-    return ReactionRule{rule};
+stochastic::ReactionRule &stochastic::Vessel::add(const ReactionRule &rule)
+{
+    rules.emplace_back(rule);
+    return rules.back();
 }
-
-
-

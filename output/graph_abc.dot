@@ -1,0 +1,10 @@
+digraph {
+ A [label="A", shape=box, style=filled, fillcolor=cyan];
+ B [label="B", shape=box, style=filled, fillcolor=cyan];
+ C [label="C", shape=box, style=filled, fillcolor=cyan];
+ r0 [label="0.001", shape=oval, style=filled, fillcolor=yellow];
+ A -> r0;
+ C -> r0;
+ r0 -> B;
+ r0 -> C;
+}

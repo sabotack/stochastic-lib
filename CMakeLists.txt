@@ -5,6 +5,7 @@ project(stochastic_lib VERSION 1.0)
 set(CMAKE_CXX_STANDARD 23)
 set(CMAKE_CXX_STANDARD_REQUIRED true)
 
+include(cmake/benchmark.cmake)
 include(cmake/doctest.cmake)
 enable_testing()
 

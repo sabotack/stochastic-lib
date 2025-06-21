@@ -1,14 +1,12 @@
-add_executable(abc abc.cpp)
-target_link_libraries(abc PRIVATE stochastic)
+function(add_example_executable name source)
+    add_executable(${name} ${source})
+    target_link_libraries(${name} PRIVATE stochastic)
+endfunction()
 
-add_executable(circadian circadian_rhythm.cpp)
-target_link_libraries(circadian PRIVATE stochastic)
+# RQ5: Demonstrate the application of the library on the three examples (shown in Fig. 1, 2, 3).
+add_example_executable(abc abc.cpp)
+add_example_executable(circadian circadian_rhythm.cpp)
+add_example_executable(seihr seihr.cpp)
 
-add_executable(seihr seihr.cpp)
-target_link_libraries(seihr PRIVATE stochastic)
-
-add_executable(seihr_estimation seihr_estimation.cpp)
-target_link_libraries(seihr_estimation PRIVATE stochastic)
-
-add_executable(main main.cpp)
-target_link_libraries(main PRIVATE stochastic)
+add_example_executable(seihr_estimation seihr_estimation.cpp)
+add_example_executable(seihr_multiple.cpp seihr_multiple.cpp)

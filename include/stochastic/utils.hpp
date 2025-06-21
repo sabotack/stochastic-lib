@@ -1,16 +1,21 @@
 #ifndef UTILS_HPP
 #define UTILS_HPP
+
 #include <functional>
 #include <iosfwd>
 
 #include "vessel.hpp"
 
-namespace stochastic {
+namespace stochastic
+{
     using StateObserver = std::function<void(double, const SymbolTable<std::string, int>&)>;
+    using ThreadObserver = std::function<void(int, double, const SymbolTable<std::string, int>&)>;
 
-    void plotTimeSeries(const std::string& title, const std::string& fileName, const std::vector<double>& times, const std::unordered_map<std::string, std::vector<int>>& values);
+    void plotTimeSeries(
+        const std::string& title, const std::string& fileName, const std::vector<double>& times,
+        const std::unordered_map<std::string, std::vector<int>>& values);
     void printVesselState(const SymbolTable<std::string, int>& symbols);
-    void exportToDot(std::ostream &os, const Vessel& vessel);
-}
+    void exportToDot(std::ostream& os, const Vessel& vessel);
+}  // namespace stochastic
 
-#endif //UTILS_HPP
+#endif  // UTILS_HPP
