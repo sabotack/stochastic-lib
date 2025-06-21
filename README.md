@@ -6,9 +6,7 @@ A C++ library for simulating stochastic systems using the **Doob–Gillespie alg
 > Developed as an assignment for the *Selected Topics in Programming* (sP) course at Aalborg University (AAU).
 
 > [!IMPORTANT]
-> All requirements for the assignment have been fulfilled! The `examples` directory provides usage examples of the library using three different models (abc, circadian_rhythm, and seihr).
->
-> Should have used function template instead of std::function for the observer implementation.
+> All requirements defined as part of the description of the assignment have been fulfilled! Additionally, the `examples` directory provides usage examples of the library using three different models (abc, circadian_rhythm, and seihr).
 
 ## Build Requirements
 - C++23-compatible compiler
